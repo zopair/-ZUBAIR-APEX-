@@ -29,8 +29,10 @@ npm test
 ```text
 src/
   routing/provider-router.js
+  orchestration/plan-builder.js
 test/
   provider-router.test.js
+  plan-builder.test.js
 docs/
   architecture.md
 ```
@@ -52,12 +54,13 @@ Never commit API keys, OAuth tokens, or provider credentials. Use the deployment
 
 ## Roadmap
 
-1. Provider routing and policy tests.
-2. Server-side provider adapters and secret resolution.
-3. Task contracts, orchestration state machine, and bounded retries.
-4. Agent roles, independent review, and evidence-based arbitration.
-5. Audit events, usage metering, budget enforcement, and observability.
-6. Integration tests against explicitly configured provider sandboxes.
-7. UI and deployment integration with the main ZUBAIR platform.
+1. Provider routing and policy tests. (implemented)
+2. Dependency-aware task planning with parallel stages. (implemented)
+3. Server-side provider adapters and secret resolution.
+4. Task contracts, orchestration state machine, and bounded retries.
+5. Agent roles, independent review, and evidence-based arbitration.
+6. Audit events, usage metering, budget enforcement, and observability.
+7. Integration tests against explicitly configured provider sandboxes.
+8. UI and deployment integration with the main ZUBAIR platform.
 
 See [docs/architecture.md](docs/architecture.md) for boundaries and implementation sequence.
