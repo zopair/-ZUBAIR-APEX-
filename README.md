@@ -4,7 +4,7 @@ Provider-agnostic orchestration foundation for a governed, multi-model AI workfo
 
 ## Current status
 
-**Foundation v0.1.0 — routing core only.** This repository currently provides deterministic provider selection by capability, preference, and estimated per-1,000-token budget. It does not yet call external model APIs, execute autonomous agents, or store credentials.
+**Foundation v0.2.0 — routing, planning, and task-contract validation.** This repository provides deterministic provider selection, dependency-aware planning, and a validated JSON-compatible task contract. It does not yet call external model APIs, execute autonomous agents, or store credentials.
 
 ## Principles
 
@@ -30,9 +30,11 @@ npm test
 src/
   routing/provider-router.js
   orchestration/plan-builder.js
+  contracts/task-contract.js
 test/
   provider-router.test.js
   plan-builder.test.js
+  task-contract.test.js
 docs/
   architecture.md
 ```
@@ -56,11 +58,12 @@ Never commit API keys, OAuth tokens, or provider credentials. Use the deployment
 
 1. Provider routing and policy tests. (implemented)
 2. Dependency-aware task planning with parallel stages. (implemented)
-3. Server-side provider adapters and secret resolution.
-4. Task contracts, orchestration state machine, and bounded retries.
-5. Agent roles, independent review, and evidence-based arbitration.
-6. Audit events, usage metering, budget enforcement, and observability.
-7. Integration tests against explicitly configured provider sandboxes.
-8. UI and deployment integration with the main ZUBAIR platform.
+3. Task contracts and safe input validation. (implemented)
+4. Server-side provider adapters and secret resolution.
+5. Orchestration state machine and bounded retries.
+6. Agent roles, independent review, and evidence-based arbitration.
+7. Audit events, usage metering, budget enforcement, and observability.
+8. Integration tests against explicitly configured provider sandboxes.
+9. UI and deployment integration with the main ZUBAIR platform.
 
 See [docs/architecture.md](docs/architecture.md) for boundaries and implementation sequence.
