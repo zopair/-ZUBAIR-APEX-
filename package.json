@@ -1,0 +1,14 @@
+{
+  "name": "zubair-apex",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Provider-agnostic multi-agent orchestration foundation for ZUBAIR APEX.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "test:watch": "node --test --watch"
+  }
+}
