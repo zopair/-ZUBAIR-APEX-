@@ -7,7 +7,7 @@ const validContract = {
   role: 'researcher',
   capability: 'research',
   input: { topic: 'model orchestration' },
-  dependsOn: [],
+  dependsOn: ['source-notes'],
   maxAttempts: 2,
 };
 
@@ -28,7 +28,7 @@ test('normalizes a valid task contract and applies safe defaults', () => {
 
 test('preserves explicitly declared dependencies and bounded attempts', () => {
   const contract = validateTaskContract(validContract);
-  assert.deepEqual(contract.dependsOn, []);
+  assert.deepEqual(contract.dependsOn, ['source-notes']);
   assert.equal(contract.maxAttempts, 2);
 });
 
