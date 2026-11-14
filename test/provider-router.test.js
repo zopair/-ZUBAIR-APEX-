@@ -38,3 +38,17 @@ test('rejects invalid budget values', () => {
     { code: 'INVALID_BUDGET' },
   );
 });
+
+test('rejects malformed provider preference lists', () => {
+  assert.throws(
+    () => selectProvider({ providers, capability: 'code', preferredProviderIds: 'openai', budget: 1 }),
+    { code: 'INVALID_ROUTING_INPUT' },
+  );
+});
+
+test('rejects a capability with no enabled provider', () => {
+  assert.throws(
+    () => selectProvider({ providers, capability: 'image-generation', preferredProviderIds: [], budget: 1 }),
+    { code: 'NO_ELIGIBLE_PROVIDER' },
+  );
+});
