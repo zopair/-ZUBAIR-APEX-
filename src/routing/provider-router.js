@@ -7,8 +7,14 @@ export function selectProvider({ providers, capability, preferredProviderIds = [
     throw createRoutingError('INVALID_BUDGET', 'Budget must be a finite non-negative number.');
   }
 
-  if (!Array.isArray(providers) || typeof capability !== 'string' || capability.trim() === '') {
-    throw createRoutingError('INVALID_ROUTING_INPUT', 'Providers and a non-empty capability are required.');
+  if (
+    !Array.isArray(providers)
+    || typeof capability !== 'string'
+    || capability.trim() === ''
+    || !Array.isArray(preferredProviderIds)
+    || preferredProviderIds.some((id) => typeof id !== 'string' || id.trim() === '')
+  ) {
+    throw createRoutingError('INVALID_ROUTING_INPUT', 'Providers, a non-empty capability, and a valid preference list are required.');
   }
 
   const capableProviders = providers.filter((provider) =>
