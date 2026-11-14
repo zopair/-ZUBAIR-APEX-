@@ -72,3 +72,23 @@ test('does not mutate caller-owned input', () => {
   assert.equal(Object.isFrozen(input), false);
   assert.equal(Object.isFrozen(input.nested), false);
 });
+
+test('deep-freezes a defensive copy of nested task input', () => {
+  const source = { ...validContract, input: { nested: { value: 1 } } };
+  const contract = validateTaskContract(source);
+  assert.equal(Object.isFrozen(contract.input.nested), true);
+  assert.notEqual(contract.input, source.input);
+});
+
+test('rejects cyclic and non-JSON task input', () => {
+  const cyclic = {};
+  cyclic.self = cyclic;
+  assert.throws(
+    () => validateTaskContract({ ...validContract, input: cyclic }),
+    { code: 'INVALID_TASK_CONTRACT' },
+  );
+  assert.throws(
+    () => validateTaskContract({ ...validContract, input: { value: undefined } }),
+    { code: 'INVALID_TASK_CONTRACT' },
+  );
+});
