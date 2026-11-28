@@ -69,3 +69,18 @@ The next engineering gate is an approved product brief and a minimal, testable a
 Requested repository attribution: **Aly Hussein Zopair (علي حسين زبير ALY HUSSEIN ZOPAIR)**.
 
 This attribution does not create a software license or establish rights over third-party components that may be added later.
+
+## Conceptual Architecture
+
+No architecture has been approved or implemented. The following diagram marks the required discovery boundary only:
+
+```mermaid
+flowchart TD
+  B[Approved product brief] -. defines .-> U[Target users and problem]
+  U -. constrains .-> A[Architecture decision]
+  A -. precedes .-> I[First testable implementation]
+```
+
+## Change log
+
+- 2026-11-28 — Added an explicit conceptual discovery flow and documentation baseline. No application code or product scope was invented.
